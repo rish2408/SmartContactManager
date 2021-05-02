@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>This is About Page</title>
+</head>
+<body>
+	<section class="banner justify-content-center align-items-center">
+		<div id="login">
+			<div class="container">
+				<div id="login-row"
+					class="row justify-content-center align-items-center">
+					<div id="login-column" class="col-md-6">
+						<div id="login-box" style="height: 450px;" class="col-md-12">
+							<form id="login-form" class="form" th:action=@{/dologin}
+								action="#" method="post">
+								<h3 class="text-center text-info">Login</h3>
+
+								<div th:if="${param.error}" class="mb-3 alert alert-danger" role="alert">
+								Invalid Username and Password</div>
+
+								<div th:if="${param.logout}" class="mb-3 alert alert-success text-center" role="alert">
+								You have been Successfully Logout</div>
+								
+								<div th:if="${param.change}" class="mb-3 alert alert-success text-center" role="alert">
+									<p th:text="${param.change}"></p>
+								</div>
+
+								<div class="mb-3">
+									<label for="username" class="text-info">Username:</label><br>
+									<input required="required" type="text" name="username" id="username"
+										class="form-control">
+								</div>
+								<div class="mb-3">
+									<label for="password" class="text-info">Password:</label><br>
+									<input required="required" type="password" name="password" id="password"
+										class="form-control">
+								</div>
+								<div class="mb-3">
+									<label for="remember-me" class="text-info">
+									<span>Remember me</span> 
+									<span><input id="remember-me" name="remember-me" type="checkbox"></span>
+									</label>
+									<br>
+									<br>
+									<br>
+									<br>
+									<div id="register-link" class="container text-center">
+										<a th:href="@{/forgot}" class="text-info">Forgot Password ?</a>
+									</div>
+									<br>
+									<br>
+								</div>
+								<div class="container text-center">
+									<input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+								</div>
+								<div class="container text-center">
+									<div id="register-link" class="text-right">
+										<a href="/signup/" class="text-info">Register here</a>
+									</div>
+								</div>
+								
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
